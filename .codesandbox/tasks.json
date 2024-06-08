@@ -1,0 +1,43 @@
+{
+  // These tasks will run in order when initializing your CodeSandbox project.
+  "setupTasks": [
+    {
+      "name": "Install Dependencies",
+      "command": "pnpm install"
+    }
+  ],
+
+  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
+  "tasks": {
+    "dev-swap": {
+      "name": "dev-swap",
+      "command": "pnpm dev-swap",
+      "runAtStart": false
+    },
+    "dev-quote": {
+      "name": "dev-quote",
+      "command": "pnpm dev-quote",
+      "runAtStart": false
+    },
+    "test": {
+      "name": "test",
+      "command": "pnpm test",
+      "runAtStart": false
+    },
+    "build": {
+      "name": "build",
+      "command": "pnpm build",
+      "runAtStart": false
+    },
+    "openapi-gen": {
+      "name": "openapi-gen",
+      "command": "pnpm openapi-gen",
+      "runAtStart": false
+    },
+    "openapi-gen-rust": {
+      "name": "openapi-gen-rust",
+      "command": "pnpm openapi-gen-rust",
+      "runAtStart": false
+    }
+  }
+}
