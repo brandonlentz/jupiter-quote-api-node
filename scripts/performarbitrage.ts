@@ -1,10 +1,10 @@
 import axios from "axios";
 import Web3 from "web3";
 import { chains } from "./utils/chains";
-import { executeSwap } from "./JupSwap"; // Import the Solana swap function
+import { executeSwap } from "./jupswap"; // Import the Solana swap function
 import { sendTelegramNotification } from "./utils/telegram"; // Import the Telegram function
 
-const userAddress = "0xde59C444C75d10CbDd733bc24E85A1630813903E";
+const userAddress = "0x7A33BBD860cFd3aE995C999E98268D400aABd675";
 
 const inputTokenAddresses: { [chainId: number]: string } = {
   1: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -12,10 +12,9 @@ const inputTokenAddresses: { [chainId: number]: string } = {
   8453: "0x4200000000000000000000000000000000000006",
 };
 
-const privateKey =
-  process.env.EVM_PRIVATE_KEY ||
-  "65e8c228f39694bc7a6e725ba34ff9b23ad8a129ce1847f242665ee3e5d7ffc8"; //get rid of this later.
-const etherscanApiKey = "WMTWS25WY6XV5T1M8BF3WNA5BI36NHDJBN";
+const privateKey = process.env.privatekey as string;
+const solprivatekey = process.env.solprivatekey as string;
+const etherscanApiKey = process.env.etherscanapikey as string;
 
 export async function getValidatedQuote(
   chainId: number,
@@ -152,7 +151,7 @@ export async function performArbitrage(
     console.log(
       `Executing swap on Solana for ${amountInLamports} lamports of ${buyContractAddress}`,
     );
-    await executeSwap(privateKey, buyContractAddress, amountInLamports); // Execute the Solana swap
+    await executeSwap(solprivatekey, buyContractAddress, amountInLamports); // Execute the Solana swap
     await sendTelegramNotification(
       `Arbitrage executed: Buy on ${buyOn} at ${amountInLamports} lamports of ${buyContractAddress}, Sell on ${sellOn}`,
     ); // Send Telegram alert

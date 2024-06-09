@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const telegramToken = "7267495528:AAGNpu0gl1g6bD05GDJ_RZRqnyetbZtwFE0";
+const telegramToken = process.env.telegramtoken;
 const chatId = "1468539726";
 
 export async function sendTelegramNotification(message: string) {
